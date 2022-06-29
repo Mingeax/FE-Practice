@@ -1,5 +1,3 @@
-export { debounce, throttle }
-
 const addBtn = document.getElementById('add')
 const minusBtn = document.getElementById('minus')
 const numBlock = document.getElementById('num')
