@@ -1,0 +1,183 @@
+form {
+    margin-top: 15vw;
+    width: 70%;
+    padding-left: 30%;
+}
+div#arrow_box1,
+div#arrow_box2,
+div#arrow_box3,
+div#arrow_box4 {
+    position: absolute;
+    padding: 0 10px;
+    background: #ff8480;
+    border: 1px solid #f50000;
+    text-align: center;
+    z-index: 5;
+    left: 6em;
+    top: calc(2.5em - 3px);
+    min-width: 9em;
+    height: 2em;
+    line-height: 2em;
+    word-break: keep-all;
+}
+
+.deactive {
+    display: none;
+}
+
+#arrow_box1:after,#arrow_box1:before,
+#arrow_box2:after,#arrow_box2:before,
+#arrow_box3:after,#arrow_box3:before,
+#arrow_box4:after,#arrow_box4:before {
+    bottom: 100%;
+    left: 50%;
+    border: solid transparent;
+    content: "";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+#arrow_box1:after,
+#arrow_box2:after,
+#arrow_box3:after,
+#arrow_box4:after {
+    border-color: rgba(255, 132, 128, 0);
+    border-bottom-color: #ff8480;
+    border-width: 12px;
+    margin-left: -12px;
+}
+
+#arrow_box1:before,
+#arrow_box2:before,
+#arrow_box3:before,
+#arrow_box4:before {
+    border-color: rgba(245, 0, 0, 0);
+    border-bottom-color: #f50000;
+    border-width: 13px;
+    margin-left: -13px;
+}
+
+.register div {
+    margin: 1em 1em;
+    position: relative;
+}
+
+.register input {
+    padding: 0;
+    border: darkcyan solid 1px;
+    border-radius: .5em;
+    display: inline-block;
+    width: 15em;
+    height: 2.5em;
+    font-size: 1em;
+}
+
+.register label {
+    display: inline-block;
+    width: 5em;
+    margin-right: 20px;
+}
+
+#submit_btn {
+    display: inline-block;
+    position: absolute;
+    margin: 10px 15%;
+    padding: 0;
+    width: 10em;
+    height: 2.5em;
+    border-radius: .5em;
+    overflow: hidden;
+    background-color: rgba(255,255,255,.5);
+}
+
+.tips i {
+    display: inline-block;
+    width: 0;
+    margin-left: 1em;
+    height: 1.5em;
+    overflow: hidden;
+    transition: width .5s;
+    vertical-align: middle;
+    font-size: small;
+}
+
+.tips .icon {
+    content: '?';
+    display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+    margin-left: 1em;
+    text-align: center;
+    background-color: darkred;
+    color: darkgray;
+    border-radius: .5em;
+    position: relative;
+    left: 0;
+    top: calc(50% - .5em);
+    user-select: none;
+}
+
+.invalid::before {
+    content: 'ㄨ';
+    display: inline-block;
+    height: 1em;
+    width: 1em;
+    color: red;
+    position: absolute;
+    left: -1.5em;
+    text-align: center;
+}
+
+.valid::before {
+    content: '√';
+    display: inline-block;
+    height: 1em;
+    width: 1em;
+    color: darkseagreen;
+    position: absolute;
+    left: -1.5em;
+    text-align: center;
+}
+
+.layer {
+    position: absolute;
+    display: inline-block;
+    width: 20em;
+    background-image: linear-gradient(
+        90deg,
+        rgba(131,58,180,1) 0%,
+        rgba(188,253,29,1) 49%,
+        rgba(252,69,134,1) 100%
+    );
+    transition: left 1s, background-image 1s;
+    height: 3.5em;
+    left: -10em;
+    z-index: -2;
+    top: -.5em;
+}
+
+#submit_btn:hover .layer {
+    left:0;
+}
+#submit_btn:active .layer {
+    background-image: linear-gradient(
+        90deg, 
+        rgba(180,66,58,1) 0%, 
+        rgba(29,253,243,1) 49%, 
+        rgba(72,69,252,1) 100%
+    );
+}
+
+.tips>.icon:hover+i {
+    width: 32em;
+    overflow: hidden;
+}
+
+#user_name:invalid,
+#password:invalid,
+#nickname:invalid,
+#email:invalid {
+    border: solid 1px orangered;
+}

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<form class="register" action="#" method="GET" autocomplete="off" novalidate>
+    <div><label for="user_name">用户名：</label
+        ><input id="user_name" type="text" pattern="\w+" required maxlength='15'
+        ><span class="tips"><span class="icon"> ? </span><i>仅可输入英文字母、数字和下划线，不能超过15个字符</i></span>
+        <div id="arrow_box1" class="deactive"></div>
+    </div>
+
+    <div><label for="password">密码：</label
+        ><input id="password" type="password" pattern="[\w\x21-\x2f\x3a-\x40\x5b-\x60\x7B-\x7F]+" required minlength="6" maxlength="8" autocomplete="off"
+        ><span class="tips"><span class="icon"> ? </span><i>仅可输入英文字母、数字和标点符号，长度不小于6位，不大于8位</i></span>
+        <div id="arrow_box2" class="deactive"></div>
+    </div>
+
+    <div><label for="nickname">昵称：</label
+        ><input id="nickname" type="text" maxlength="16" required
+        ><span class="tips"><span class="icon"> ? </span><i>昵称不能超过16个字符</i></span>
+        <div id="arrow_box3" class="deactive"></div>
+
+    </div>
+
+    <div><label for="email">注册邮箱：</label
+        ><input id="email" type="email" required minlength=7
+        ><span class="tips"><span class="icon"> ? </span><i>输入正确的邮箱地址</i></span>
+        <div id="arrow_box4" class="deactive"></div>
+    </div>
+    <div>
+    <button type="submit" id="submit_btn"><span class="layer"></span>注册</button>
+    </div>
+</form>
+
+<script>
+    const form = document.getElementsByTagName('form')[0];
+    const userName = document.getElementById('user_name');
+    const password = document.getElementById('password');
+    const nickname = document.getElementById('nickname');
+    const email = document.getElementById('email');
+    const submitBtn = document.getElementById('submit_btn');
+    const inputField = document.querySelectorAll('input');
+
+    const userNameLabel = document.querySelector('[for="user_name"]');
+    const passwordLabel = document.querySelector('[for="password"]');
+    const nicknameLabel = document.querySelector('[for="nickname"]');
+    const emailLabel = document.querySelector('[for="email"]');
+
+    const normalRe = /[\w\x21-\x2f\x3a-\x40\x5b-\x60\x7B-\x7F]+/;
+
+    const arrowBox1 = document.getElementById('arrow_box1');
+    const arrowBox2 = document.getElementById('arrow_box2');
+    const arrowBox3 = document.getElementById('arrow_box3');
+    const arrowBox4 = document.getElementById('arrow_box4');
+
+    
+
+
+    userName.addEventListener('keydown',(event) => {
+        if (!/\w+/.test(event.key)) {
+            event.preventDefault();
+            console.log(event.key);
+        }
+    })
+    
+    password.addEventListener('keydown',(event) => {
+        if (!normalRe.test(event.key)) {
+            event.preventDefault();
+            console.log(event.key);
+        }
+    })
+
+    password.addEventListener('paste',(event) => {
+        event.preventDefault();
+        arrowBox2.textContent = '已禁用粘贴板，请直接输入';
+        arrowBox2.setAttribute('class','')
+        let timeoutID1 = window.setTimeout(() => {
+            arrowBox2.setAttribute('class','deactive');
+            arrowBox2.textContent = '';
+            timeoutID1 = 1;
+            console.log(event.target,timeoutID1);
+        },1500)
+    })
+
+    // password.addEventListener('blur',(event) =>{
+    //     event.preventDefault();
+    //     if (!password.validity.valid) {
+    //         passwordLabel.setAttribute('class','invalid')
+    //     }
+    //     else {
+    //         passwordLabel.setAttribute('class','')
+    //     }
+    // })
+
+    inputField.forEach(
+         function(currentValue) {
+            currentValue.addEventListener('input',(event) => {
+                if (!currentValue.validity.valid) {
+                    currentValue.previousSibling.setAttribute('class','invalid')
+                }
+                else {
+                    currentValue.previousSibling.setAttribute('class','valid')
+                }
+            })
+        }
+    )
+
+
+
+
+    userName.addEventListener('blur',(event) =>{
+        // event.preventDefault();
+        userNameCheckValidity();
+        console.log('un');
+    })
+
+    password.addEventListener('blur',(event) =>{
+        // event.preventDefault();
+        passwordCheckValidity()
+    })
+
+    nickname.addEventListener('blur',(event) => {
+        event.preventDefault();
+        nicknameCheckValidity()
+    })
+
+    email.addEventListener('blur',(event) => {
+        event.preventDefault();
+        emailCheckValidity()
+    })
+
+    submitBtn.addEventListener('click',(event) => {
+        if (!(email.validity.valid&&userName.validity.valid&&nickname.validity.valid&&password.validity.valid)){
+            event.preventDefault();
+            if ( emailCheckValidity()) {
+                email.select();
+            }
+            else if (userNameCheckValidity()) {
+                userName.select();
+            }
+            else if (nicknameCheckValidity()) {
+                nickname.select();
+            }
+            else if (passwordCheckValidity()) {
+                password.select();
+
+            }
+        }
+    })
+        
+    function emailCheckValidity(){
+        if (!email.validity.valid){
+            emailLabel.setAttribute('class','invalid');
+            if (email.validity.valueMissing) {
+                arrowBox4.textContent = '请输入邮箱地址';
+                arrowBox4.setAttribute('class','');
+                
+            } else if (email.validity.tooShort) {
+                arrowBox4.textContent = '文字过短';
+                arrowBox4.setAttribute('class','');
+
+            } else if (email.validity.typeMismatch) {
+                arrowBox4.textContent = '邮箱地址格式错误';
+                arrowBox4.setAttribute('class','');
+            }
+
+            else {
+                arrowBox4.textContent = '未知错误，请重新输入';
+                arrowBox4.setAttribute('class','');
+            }
+            deactivilizeArrowBox(arrowBox4);
+            return false;
+        }
+
+        else {
+            emailLabel.setAttribute('class','valid');
+            arrowBox4.setAttribute('class','deactive');
+            return true;
+        }
+    }
+
+    function userNameCheckValidity(){
+        if (!userName.validity.valid) {
+            userNameLabel.setAttribute('class','invalid');
+
+            if (userName.validity.valueMissing) {
+                arrowBox1.textContent = '请输入用户名';
+                arrowBox1.setAttribute('class','');
+            }
+            
+            else if (userName.validity.patternMismatch) {
+                arrowBox1.textContent = '输入了非法字符';
+                arrowBox1.setAttribute('class','');
+            }
+            
+            else if (userName.validity.tooLong) {
+                arrowBox1.textContent = '文字过长';
+                arrowBox1.setAttribute('class','');
+            }
+        
+            else {
+                arrowBox1.textContent = '未知错误，请重新输入';
+                arrowBox1.setAttribute('class','');
+            }
+            deactivilizeArrowBox(arrowBox1)
+            return false;
+        }
+
+        else {
+            userNameLabel.setAttribute('class','valid');
+            arrowBox1.setAttribute('class','deactive');
+            return true;
+        }
+    }
+
+    function nicknameCheckValidity(){
+        if (!nickname.validity.valid) {
+            nicknameLabel.setAttribute('class','invalid');
+            if (nickname.validity.valueMissing){
+                arrowBox3.textContent = '请输入昵称';
+                arrowBox3.setAttribute('class','');
+            }
+
+
+            else if (nickname.validity.tooLong) {
+                arrowBox3.textContent = '文本过长';
+                arrowBox3.setAttribute('class','');
+            }
+
+            else {
+                arrowBox3.textContent = '未知错误，请重新输入';
+                arrowBox3.setAttribute('class','');
+            }
+            deactivilizeArrowBox(arrowBox3);
+            return false;
+        }
+
+        else {
+            arrowBox3.setAttribute('class','deactive');
+            nicknameLabel.setAttribute('class','valid');
+            return true;
+        }
+        
+    }
+
+    function passwordCheckValidity(){
+        if (!password.validity.valid){
+            arrowBox2.textContent = '请设置合适的密码';
+            arrowBox2.setAttribute('class','');
+            deactivilizeArrowBox(arrowBox2)
+            passwordLabel.setAttribute('class','invalid');
+            return false;
+        }
+
+        else {
+            passwordLabel.setAttribute('class','valid');
+            arrowBox2.setAttribute('class','deactive');
+            return true;
+
+        }
+    }
+
+    
+    function deactivilizeArrowBox(anArrowBox) {
+        let deacArrBoxTimeout = window.setTimeout(() => {
+            anArrowBox.setAttribute('class','deactive');
+            anArrowBox.textContent = '';
+            console.log(deacArrBoxTimeout);
+            clearTimeout('deacArrBoxTimeout');
+        },1500);
+    }
+
+
+</script>
+</body>
+</html>
