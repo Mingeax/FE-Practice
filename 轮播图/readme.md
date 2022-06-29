@@ -8,7 +8,7 @@
 + 数字按钮选中效果
 + 鼠标移入停止自动轮播
 
-体验网页: [GitHub Pages](https://mingeax.github.io/FE-Practice/%E8%BD%AE%E6%92%AD%E5%9B%BE/).
+体验网页: [GitHub Pages](https://mingeax.github.io/FE-Practice/%E8%BD%AE%E6%92%AD%E5%9B%BE/index.html).
 
 ## 实现方式
 

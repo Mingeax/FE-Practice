@@ -6,7 +6,7 @@
 
 演示视频见: [哔哩哔哩视频](https://www.bilibili.com/video/BV1234y1t7fh/ 'BV1234y1t7fh') .
 
-体验网页: [GIthub Pages](https://mingeax.github.io/FE-Practice/%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%A1%A8%E5%8D%95/) .
+体验网页: [GIthub Pages](https://mingeax.github.io/FE-Practice/%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%A1%A8%E5%8D%95/index.html) .
 
 ## 使用技术
 原生 HTML + CSS + JavaScript

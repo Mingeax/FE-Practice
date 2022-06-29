@@ -1,4 +1,4 @@
-# static-lagou
+# 拉钩网首页静态布局
 
 2021.7.21
 
@@ -7,7 +7,7 @@
 ### 效果展示
 ![效果图](effect-screenshot.png '效果展示')
 
-体验网页: [GitHub Pages](https://mingeax.github.io/FE-Practice/%E6%8B%89%E9%92%A9%E7%BD%91%E9%A6%96%E9%A1%B5%E9%9D%99%E6%80%81%E5%B8%83%E5%B1%80/).
+体验网页: [GitHub Pages](https://mingeax.github.io/FE-Practice/%E6%8B%89%E9%92%A9%E7%BD%91%E9%A6%96%E9%A1%B5%E9%9D%99%E6%80%81%E5%B8%83%E5%B1%80/index.html).
 
 ### 使用技术
 原生 HTML + CSS
