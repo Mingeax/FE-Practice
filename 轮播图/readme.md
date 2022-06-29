@@ -8,7 +8,9 @@
 + 数字按钮选中效果
 + 鼠标移入停止自动轮播
 
+体验网页: [GitHub Pages](https://mingeax.github.io/FE-Practice/%E8%BD%AE%E6%92%AD%E5%9B%BE/).
+
 ## 实现方式
 
-构建一个对象,包含轮播图专有的各种属性和方法.然后可以在外部修改该对象的`idx`属性,来触发其setter/getter,以切换到对应的图片.
+构建一个对象,包含轮播图专有的各种属性和方法.使用时在外部修改该对象的`idx`属性,来触发其setter/getter,以切换到对应的图片.
 
