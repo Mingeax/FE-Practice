@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <title>轮播图</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .container {
+            position: relative;
+            display: flex;
+            flex-flow: row nowrap;
+            place-items: center stretch;
+            margin: auto;
+            width: 250px;
+            height: max-content;
+            overflow: hidden;
+        }
+        .container .toggle__arrow{
+            position: absolute;
+            background-color: cornflowerblue;
+            cursor: pointer;
+            top: calc(50% - 10px);
+            z-index: 10;
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            line-height: 20px;
+            user-select: none;
+        }
+        #toggle__arrow__left {
+            left: 0;
+        }
+        #toggle__arrow__right {
+            right: 0;
+        }
+
+        #carousel {
+            position: relative;
+            left: 0;
+            display: flex;
+            flex-flow: row nowrap;
+            place-items: center stretch;
+            width: fit-content;
+            background-color: gray;
+            transition: transform .2s linear;
+        }
+        #carousel .crs__block {
+            width: 250px;
+        }
+        #carousel .crs__block .crs__pic {
+            width: 100%;
+            display: block;
+        }
+
+        #idx {
+            position: relative;
+            margin: 10px auto;
+            width: fit-content;
+            display: flex;
+            place-content: center space-around;
+            flex-flow: row nowrap;
+            gap: 10px;
+        }
+        .idx__btn,
+        .idx__btn--active {
+            display: inline;
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            background-color: aqua;
+            border-radius: 10px;
+            padding: 0;
+            border: none;
+            cursor: pointer;
+        }
+        .idx__btn--active {
+            background-color: goldenrod;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="toggle__arrow" id="toggle__arrow__left">&lt;</div>
+
+        <div id="carousel">
+            <div class="crs__block" id="crs__block1">
+                <img src="./asset/轮播图1.png" alt="" class="crs__pic" id="crs__pic1">
+            </div>
+            <div class="crs__block" id="crs__block2">
+                <img src="./asset/轮播图2.png" alt="" class="crs__pic" id="crs__pic2">
+            </div>
+            <div class="crs__block" id="crs__block3">
+                <img src="./asset/轮播图3.png" alt="" class="crs__pic" id="crs__pic3">
+            </div>
+        </div>
+
+        <div class="toggle__arrow" id="toggle__arrow__right">&gt;</div>
+    </div>
+
+    <div id="idx">
+        <button class="idx__btn" id="idx1">1</button>
+        <button class="idx__btn" id="idx2">2</button>
+        <button class="idx__btn" id="idx3">3</button>
+    </div>
+
+    <script src=".\轮播图.js"></script>
+</body>
+</html>
