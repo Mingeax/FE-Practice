@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex骰子布局</title>
+    <style>
+        .wrapper {
+            position: relative;
+            margin: 20px auto;
+            padding: 10px;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            justify-items: center;
+            gap: 20px;
+            padding: 10px;
+            border: solid 1px greenyellow;
+            background-color: #fff;
+        }
+        .container .dice {
+            display: flex;
+            flex-flow: column wrap;
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+            border: solid 1px gray;
+            padding: 10px;
+            background-color: navajowhite;
+            justify-content: space-between;
+            align-items: stretch;
+        }
+        .container .dice .col {
+            display: flex;
+        }
+        .container .dice .col .pip {
+            width: 10px;
+            height: 10px;
+            border-radius: 5px;
+            background-color: orangered;
+        }
+
+        #points1 .col {
+            margin: auto;
+            justify-content: center;
+        }
+
+        #points2 .col:nth-child(2) {
+            justify-content: flex-end;
+        }
+
+        #points3 .col:nth-child(2) {
+            justify-content: center;
+        }
+        #points3 .col:nth-child(3) {
+            justify-content: flex-end;
+        }
+
+        #points4 .col {
+            justify-content: space-between;
+        }
+
+        #points5 .col:nth-child(1),
+        #points5 .col:nth-child(3) {
+            justify-content: space-between;
+        }
+        #points5 .col:nth-child(2) {
+            justify-content: center;
+        }
+
+        #points6 .col {
+            justify-content: space-around;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <div class="dice" id="points1">
+                <div class="col">
+                    <div class="pip">
+                    </div>
+                </div>
+            </div>
+            <div class="dice" id="points2">
+                <div class="col">
+                    <div class="pip"></div>
+                </div>
+                <div class="col">
+                    <div class="pip"></div>
+                </div>
+            </div>
+            <div class="dice" id="points3">
+                <div class="col">
+                    <div class="pip"></div>
+                </div>
+                <div class="col">
+                    <div class="pip"></div>
+                </div>
+                <div class="col">
+                    <div class="pip"></div>
+                </div>
+            </div>
+            <div class="dice" id="points4">
+                <div class="col">
+                    <div class="pip"></div>
+                    <div class="pip"></div>
+                </div>
+                <div class="col">
+                    <div class="pip"></div>
+                    <div class="pip"></div>
+                </div>
+            </div>
+            <div class="dice" id="points5">
+                <div class="col">
+                    <div class="pip"></div>
+                    <div class="pip"></div>
+                </div>
+                <div class="col">
+                    <div class="pip">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="pip"></div>
+                    <div class="pip"></div>
+                </div>
+            </div>
+            <div class="dice" id="points6">
+                <div class="col">
+                    <div class="pip"></div>
+                    <div class="pip"></div>
+                </div>
+                <div class="col">
+                    <div class="pip"></div>
+                    <div class="pip"></div>
+                </div>
+                <div class="col">
+                    <div class="pip"></div>
+                    <div class="pip"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
